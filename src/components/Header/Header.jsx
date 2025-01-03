@@ -1,7 +1,10 @@
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
     return (
-        <div>
-            <h2>This is header</h2>
+        <div className="flex items-center justify-center">
+            <NavLink className='btn ml-2' to='/'>Home</NavLink>
+            <NavLink className='btn ml-2' to='/login'>Log in</NavLink>
         </div>
     );
 };
