@@ -8,7 +8,7 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
-    const twitterProvider = new TwitterAuthProvider()
+    // const twitterProvider = new TwitterAuthProvider()
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
@@ -39,13 +39,13 @@ const Login = () => {
             .catch(error => console.log(error))
     }
 
-    const handleTwitterSignIn = () => {
-        signInWithPopup(auth, twitterProvider)
-            .then((result) => {
-                setUser(result.user)
-            })
-            .catch(error => console.log(error))
-    }
+    // const handleTwitterSignIn = () => {
+    //     signInWithPopup(auth, twitterProvider)
+    //         .then((result) => {
+    //             setUser(result.user)
+    //         })
+    //         .catch(error => console.log(error))
+    // }
     return (
         <div className="flex justify-center my-6">
             {/* <button onClick={handleGoogleSignIn} className="btn btn-accent">Continue with Google</button> */}
@@ -56,7 +56,7 @@ const Login = () => {
                     <div>
                         <button onClick={handleGoogleSignIn} className="btn btn-accent">Continue with Google</button>
                         <button onClick={handleGithubSignIn} className="btn btn-outline btn-success">Continue with Github</button>
-                        <button onClick={handleTwitterSignIn} className="btn btn-accent">Sign In with twitter</button>
+                        {/* <button onClick={handleTwitterSignIn} className="btn btn-accent">Sign In with twitter</button> */}
                     </div>
             }
             {
