@@ -5,4 +5,5 @@
  * step - 4 : firebase config
  * step - 5 : export auth from the init file
  *  step -6: in the console authentication > started > enable Google Provider
+ * step - 7 : then use this code by click handler using onClick method
  */
