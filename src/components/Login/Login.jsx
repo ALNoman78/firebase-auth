@@ -1,6 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut, TwitterAuthProvider } from "firebase/auth"
 import auth from "../../firebase.init"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 
 const Login = () => {
@@ -53,9 +54,10 @@ const Login = () => {
                 user ?
                     <button onClick={handleSignOut} className="btn ml-3 btn-error">Sign Out</button>
                     :
-                    <div>
+                    <div className="flex flex-col gap-4">
                         <button onClick={handleGoogleSignIn} className="btn btn-accent">Continue with Google</button>
                         <button onClick={handleGithubSignIn} className="btn btn-outline btn-success">Continue with Github</button>
+                        <Link to='/email' className="btn btn-outline btn-primary">Sign in with Email</Link>
                         {/* <button onClick={handleTwitterSignIn} className="btn btn-accent">Sign In with twitter</button> */}
                     </div>
             }
