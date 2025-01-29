@@ -53,7 +53,7 @@ const Email = () => {
                     </button>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary">Sing Up</button>
                 </div>
                 <p>Have an account ? <Link to='/signin' className="text-green-500 font-medium underline">Log In</Link></p>
             </form>
