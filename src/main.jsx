@@ -11,23 +11,28 @@ import Main from './components/Layout/Main';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Email from './components/Email/Email';
+import SignIn from './components/Signin/SignIn';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children : [
+    children: [
       {
-        path : '/',
-        element : <Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path : '/login',
-        element : <Login></Login>
+        path: '/login',
+        element: <Login></Login>
       },
       {
-        path : '/email',
-        element : <Email></Email>
+        path: '/email',
+        element: <Email></Email>
+      },
+      {
+        path: '/signin',
+        element: <SignIn></SignIn>
       }
     ]
   },
