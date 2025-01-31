@@ -49,6 +49,7 @@ const Login = () => {
     // }
     return (
         <div className="flex justify-center my-6">
+        {/* there is all button to sign in method */}
             {/* <button onClick={handleGoogleSignIn} className="btn btn-accent">Continue with Google</button> */}
             {
                 user ?
