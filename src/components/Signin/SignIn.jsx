@@ -1,14 +1,18 @@
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../../firebase.init";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignIn = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
     const emailRef = useRef('')
+
+    const { signInUser } = useContext(AuthContext)
+    console.log(signInUser)
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -17,7 +21,7 @@ const SignIn = () => {
 
         setSuccess(false)
 
-        signInWithEmailAndPassword(auth, email, password)
+        signInUser(email , password)
             .then((result) => {
                 console.log(result.user)
                 setSuccess(true)
@@ -36,9 +40,9 @@ const SignIn = () => {
             console.log('Use verified email address')
         } else {
             sendPasswordResetEmail(auth, email)
-            .then(() => {
-                alert('Password reset email sent , please check your email ')
-            })
+                .then(() => {
+                    alert('Password reset email sent , please check your email ')
+                })
         }
     }
     return (

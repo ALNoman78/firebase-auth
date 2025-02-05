@@ -1,14 +1,17 @@
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
-import auth from "../../firebase.init"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { sendEmailVerification } from "firebase/auth";
+import auth from "../../firebase.init";
 
 const Email = () => {
     const [error, setError] = useState('')
-    const [isVisible , setIsVisible] = useState(false)
-    const [success , setSuccess] = useState(false)
+    const [isVisible, setIsVisible] = useState(false)
+    const [success, setSuccess] = useState(false)
+
+    const { createUser } = useContext(AuthContext)
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -17,18 +20,25 @@ const Email = () => {
 
         setError('')
         setSuccess(false)
+        console.log(email, password)
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                console.log(result.user)
-                sendEmailVerification(auth.currentUser)
-                .then(res => console.log('verified user', res))
-                setSuccess(true)
+        createUser(email , password)
+        .then(() => {
+            setSuccess(true)
+            sendEmailVerification(auth.currentUser)
+            .then(() => {
+                console.log('Verification email sent')
             })
-            .catch(error => {
-                setError(error.message)
-                setSuccess(false)
-            })
+        })
+        .catch((error) => {
+            console.log(error.message)
+            setError(error.message)
+            setSuccess(false)
+        })
+
+
+        // createUserWithEmailAndPassword(auth, email, password)
+
     }
 
 
