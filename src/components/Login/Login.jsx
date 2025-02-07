@@ -1,11 +1,14 @@
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 import auth from "../../firebase.init"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../providers/AuthProvider"
 
 
 const Login = () => {
     const [user, setUser] = useState(null)
+
+    const { signOutUser } = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
@@ -21,7 +24,7 @@ const Login = () => {
     }
 
     const handleSignOut = () => {
-        signOut(auth)
+        signOutUser(auth)
             .then(() => {
                 console.log('successful')
                 setUser(null)
@@ -49,7 +52,7 @@ const Login = () => {
     // }
     return (
         <div className="flex justify-center my-6">
-        {/* there is all button to sign in method */}
+            {/* there is all button to sign in method */}
             {/* <button onClick={handleGoogleSignIn} className="btn btn-accent">Continue with Google</button> */}
             {
                 user ?
