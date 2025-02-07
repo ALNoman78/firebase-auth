@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import auth from "../../firebase.init"
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
